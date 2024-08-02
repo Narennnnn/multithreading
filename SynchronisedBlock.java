@@ -22,6 +22,39 @@ class Stack {
             return true;
         }
     }
+    /*
+    public synchronized boolean push(int element){
+            if(isFull()){
+                return false;
+            }
+            ++ stackTop;
+            try{
+                Thread.sleep(1000);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            array[stackTop]=element;
+            return true;
+    }
+
+
+    so behind the scene: JVM considers current object i.e this as a lock
+    public  boolean push(int element){
+        synchronized(this){
+            if(isFull()){
+                return false;
+            }
+            ++ stackTop;
+            try{
+                Thread.sleep(1000);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            array[stackTop]=element;
+            return true;        
+        }
+    }
+     */
     public int pop(){
         synchronized(lock){
             if(isEmpty()){
