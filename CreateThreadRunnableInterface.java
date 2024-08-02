@@ -1,19 +1,11 @@
-class Thread2 implements Runnable{
-    @Override
-    public void run(){
-        try{
-            Thread.sleep(1000);
-            for(int i=0;i<5;i++){
-                System.out.println(Thread.currentThread()+" "+i);
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-}
+
 public class CreateThreadRunnableInterface {
     public static void main(String[] args) {
-        Thread thread = new Thread(new Thread2());
+        Thread thread = new Thread(()->{//lambda function such that task is not null will call run method of Thread class
+            for(int i=0;i<10;i++){
+                System.out.println("Thread "+Thread.currentThread()+" "+i);
+            }
+        });//
         thread.start();
         System.out.println("Main thread came!");
     }
