@@ -55,7 +55,7 @@ public class Unsynchronised{
         new Thread(()->{
             int counter=0;
             while(++counter<10){
-                System.out.println("Pushed"+stack.pop());
+                System.out.println("Popped"+stack.pop());
             }
         },"Popper").start();   
         System.out.println("main is exiting");    
