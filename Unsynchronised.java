@@ -49,15 +49,36 @@ public class Unsynchronised{
                 System.out.println("Pushed"+stack.push(100));
             }
         },"Pusher").start();
-        // race around condition may arise where push and pop both try to access resources of Stack class, thus may cause IndexOutOfBound Exception as well as in case of push 
-        // it must be sleeping but on the same time pop() must be decrementing stackTop to less than 0
-        // we need synchronised approach so that only operation takes place in synchronised manner
+
         new Thread(()->{
             int counter=0;
             while(++counter<10){
                 System.out.println("Popped"+stack.pop());
             }
         },"Popper").start();   
-        System.out.println("main is exiting");    
+        System.out.println("main is exiting");  
+        // race around condition may arise where push and pop both try to access resources of Stack class, thus may cause IndexOutOfBound Exception as well as in case of push 
+        // it must be sleeping but on the same time pop() must be decrementing stackTop to less than 0
+        // we need synchronised approach so that only operation takes place in synchronised manner
+        /*
+         ➜  multithreading git:(main) java Unsynchronised      
+        main is starting
+        main is exiting
+        Pushedtrue
+        Popped0
+        Pushedtrue
+        Popped100
+        Popped100
+        Popped-2147483648
+        Popped-2147483648
+        Popped-2147483648
+        Popped-2147483648
+        Popped-2147483648
+        Popped-2147483648
+        Exception in thread "Pusher" java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 5
+        at Stack.push(Unsynchronised.java:18)
+        at Unsynchronised.lambda$main$0(Unsynchronised.java:49)
+        at java.base/java.lang.Thread.run(Thread.java:1570)
+         */  
     }
 }
