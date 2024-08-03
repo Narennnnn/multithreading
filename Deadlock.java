@@ -16,13 +16,13 @@ public class Deadlock {
             }
         },"thread1");
         Thread thread2 = new Thread(()->{
-            synchronized(lock1){
+            synchronized(lock2){
                 try {
                     Thread.sleep(1);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                synchronized(lock2){
+                synchronized(lock1){
                     System.out.println("lock acquired");
                 }
             }
