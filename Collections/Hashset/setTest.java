@@ -29,7 +29,18 @@ public class setTest {
             System.out.println("couldn't clear");
             System.out.print(itr2.next()+" ");
         }
-
+        List<String> cities = new ArrayList<>();
+        cities.add("Dehradun");
+        cities.add("Bangalore");
+        cities.add("Hyderabad");
+        cities.add("Dehradun");
+        System.out.println();
+        for(String city: cities)
+         System.out.print(city+" ");
+        Set<String> uniqueCity = new HashSet<>(cities);
+        System.out.println();
+        for(String city: uniqueCity)
+         System.out.print(city+" ");
     }
 }
 
