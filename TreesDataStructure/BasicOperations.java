@@ -1,4 +1,5 @@
 package TreesDataStructure;
+
 import java.util.*;
 
 class Node {
@@ -64,9 +65,36 @@ class BasicOperations {
         return current; // Return the found node, or null if not found
     }
 
+    // Preorder traversal (Root -> Left -> Right)
+    private void preorder(Node root) {
+        if (root != null) {
+            System.out.print(root.data + " ");
+            preorder(root.leftChild);
+            preorder(root.rightChild);
+        }
+    }
+
+    // Inorder traversal (Left -> Root -> Right)
+    private void inorder(Node root) {
+        if (root != null) {
+            inorder(root.leftChild); 
+            System.out.print(root.data + " ");
+            inorder(root.rightChild); 
+        }
+    }
+
+    // Postorder traversal (Left -> Right -> Root)
+    private void postorder(Node root) {
+        if (root != null) {
+            postorder(root.leftChild); 
+            postorder(root.rightChild);
+            System.out.print(root.data + " ");
+        }
+    }
+
     public static void main(String[] args) {
         BasicOperations treeOps = new BasicOperations();
-        
+
         // Create the root node
         Node treeNode = new Node(100);
 
@@ -76,12 +104,14 @@ class BasicOperations {
         treeOps.insert(treeNode, 25);
         treeOps.insert(treeNode, 75);
 
-        // Search for a node
-        Node result = treeOps.search(75, treeNode);
-        if (result != null) {
-            System.out.println("\nNode found: " + result.data);
-        } else {
-            System.out.println("\nNode not found.");
-        }
+        // Traversals
+        System.out.println("\nPreOrder Traversal: ");
+        treeOps.preorder(treeNode);
+
+        System.out.println("\nInOrder Traversal: ");
+        treeOps.inorder(treeNode);
+
+        System.out.println("\nPostOrder Traversal: ");
+        treeOps.postorder(treeNode);
     }
 }
