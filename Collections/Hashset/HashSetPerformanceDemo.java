@@ -2,13 +2,11 @@ package Collections.Hashset;
 import java.util.*;
 public class HashSetPerformanceDemo {
     public static void main(String[] args) {
-        // Generate a large array of numbers
-        int[] numbers = new int[10000];
+        int[] numbers = new int[10000];// large array of numbers 
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = (int) (Math.random() * 1000000);
         }
-
-        // Measure time to populate the set
+        //  time to populate the set
         long startTime = System.nanoTime();
         Set<String> prefixes = new HashSet<>();
         int maxLen = 0;
@@ -25,7 +23,7 @@ public class HashSetPerformanceDemo {
         System.out.println("Number of prefixes stored: " + prefixes.size());
         System.out.println("Time taken to populate the set: " + duration + " ms");
 
-        // Measure time for contains operation
+        // time for contains operation
         startTime = System.nanoTime();
         boolean contains = prefixes.contains("123456");
         endTime = System.nanoTime();
@@ -45,7 +43,6 @@ public class HashSetPerformanceDemo {
         }
         endTime = System.nanoTime();
         duration = (endTime - startTime);  // Keep in nanoseconds
-
         System.out.println("Longest matching prefix length for " + testNumber + ": " + longestPrefix);
         System.out.println("Time taken to find longest prefix: " + duration + " ns");
     }

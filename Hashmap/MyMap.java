@@ -73,7 +73,6 @@ public class MyMap<K, V> {
 
         }     
     }
-
     public void remove(K key) {
         int bucketIndex = getBucketIndex(key);
         MapNode<K, V> head = bucket.get(bucketIndex);
